@@ -9,5 +9,9 @@ class Manager extends Employee {
     grabRole() {
         return Manager;
     }
+
+    getOfficeNumber() {
+    return this.officeNumber;
+    }
 }
 module.exports = Manager
