@@ -84,3 +84,28 @@ function newEngineer() {
     ]);
 }
 
+function newIntern() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "nameIntern",
+            message: "Provide intern name:"
+        },
+        {
+            type: "input",
+            name: "idIntern",
+            message: "What's the ID of the intern:"
+        },
+        {
+            type: "input",
+            name: "emailIntern",
+            message: "What' s the email of the intern:"
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What's the school the intern is attending to:"
+        }
+    ]);
+}
+
