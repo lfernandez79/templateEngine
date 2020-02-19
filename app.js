@@ -46,3 +46,41 @@ function newManager() {
     
 }
 
+// QUESTION TO CREATE A TEAM WITH A CHOICE OPTIONS
+function newTeam() {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "Members",
+            message: "Do you have an engineer or intern?",
+            choices: ["Engineer", "Intern", "Don't add any more team members"]
+        }
+    ]);
+}
+
+// QUESTION TO CREATE AN ENGINEER
+function newEngineer() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "nameEngineer",
+            message: "Name of the engineer:?"
+        },
+        {
+            type: "input",
+            name: "idEngineer",
+            message: "What's ID of the engineer:"
+        },
+        {
+            type: "input",
+            name: "emailEngineer",
+            message: "What's the email of the engineer:"
+        },
+        {
+            type: "input",
+            name: "githubID",
+            message: "Enter engineer github username:"
+        }
+    ]);
+}
+
