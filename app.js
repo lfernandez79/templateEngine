@@ -49,32 +49,6 @@ function newManager() {
 newManager();
 
 
-// QUESTION TO CREATE A TEAM WITH A CHOICE OPTIONS
-function newTeam() {
-    return inquirer.prompt([
-        {
-            type: "list",
-            name: "Members",
-            message: "Do you have an engineer or intern?",
-            choices: ["Engineer", "Intern", "Don't add team members"]
-        }
-    ])
-    .then(answers => {
-        switch (answers.Members) {
-            case "Engineer":
-                 newEngineer();
-                break;
-            case "Intern":
-                 newIntern();
-                 break;
-        
-            // default:
-            //     createCards(arrManager, arrEngineer, arrIntern);
-        }
-    });
-
-}
-
 // QUESTION TO CREATE AN ENGINEER
 function newEngineer() {
     return inquirer.prompt([
@@ -110,6 +84,7 @@ function newEngineer() {
 
 }
 
+// QUESTION FOR INTERN
 function newIntern() {
     return inquirer.prompt([
         {
@@ -138,5 +113,31 @@ function newIntern() {
         arrIntern.push(intern);
         newTeam();
     });
+}
+
+// QUESTION TO CREATE A TEAM WITH A CHOICE OPTIONS
+function newTeam() {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "Members",
+            message: "Do you have an engineer or intern?",
+            choices: ["Engineer", "Intern", "Don't add team members"]
+        }
+    ])
+        .then(answers => {
+            switch (answers.Members) {
+                case "Engineer":
+                    newEngineer();
+                    break;
+                case "Intern":
+                    newIntern();
+                    break;
+
+                // default:
+                //     createCards(arrManager, arrEngineer, arrIntern);
+            }
+        });
+
 }
 
