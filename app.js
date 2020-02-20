@@ -2,29 +2,15 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-
+// link all Classes
 const Manager = require("./Assets/lib/Manager");
 const Engineer = require("./Assets/lib/Engineer")
 const Intern = require("./Assets/lib/Intern");
 
-const 
+const arrManager = [];
+const arrEngineer = [];
+const arrIntern = [];
 
-// Stored all funciton definition with async-await
-// async function Begin() {
-
-//     try {
-//         var manager = await newManager();
-//         var team = await newTeam();
-//         var engineer = await newEngineer();
-//         var intern = await newIntern();
-//     } catch (error) {
-//         console.log(error);
-//     };
-    
-// };
-
-// Calling fucntion created above.
-// Begin();
 
 // MANAGER QUESTIONS
 function newManager() {
@@ -82,8 +68,8 @@ function newTeam() {
                  newIntern();
                  break;
         
-            default:
-                createCards(arrManager, arrEngineer, arrIntern);
+            // default:
+            //     createCards(arrManager, arrEngineer, arrIntern);
         }
     });
 
