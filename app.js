@@ -2,22 +2,27 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// sotred all funciton definition with async-await
-async function Begin() {
 
-    try {
-        var manager = await newManager();
-        var team = await newTeam();
-        var engineer = await newEngineer();
-        var intern = await newIntern();
-    } catch (error) {
-        console.log(error);
-    };
+const Manager = require("./Assets/lib/Manager");
+const Engineer = require("./Assets/lib/Engineer")
+const Intern = require("./Assets/lib/Intern");
+
+// Stored all funciton definition with async-await
+// async function Begin() {
+
+//     try {
+//         var manager = await newManager();
+//         var team = await newTeam();
+//         var engineer = await newEngineer();
+//         var intern = await newIntern();
+//     } catch (error) {
+//         console.log(error);
+//     };
     
-};
+// };
 
 // Calling fucntion created above.
-Begin();
+// Begin();
 
 // MANAGER QUESTIONS
 function newManager() {
@@ -44,7 +49,16 @@ function newManager() {
         },
     ])
     
+
+.then(function({ nameManager, idManager, emailManager, phoneManager}){
+    const manager = new Manager (nameManager, idManager, emailManager, phoneManager);
+
+    arrManager.push(manager);
+    newTeam();
+  });
 }
+newManager();
+
 
 // QUESTION TO CREATE A TEAM WITH A CHOICE OPTIONS
 function newTeam() {
@@ -53,9 +67,23 @@ function newTeam() {
             type: "list",
             name: "Members",
             message: "Do you have an engineer or intern?",
-            choices: ["Engineer", "Intern", "Don't add any more team members"]
+            choices: ["Engineer", "Intern", "Don't add team members"]
         }
-    ]);
+    ])
+    .then(answers => {
+        switch (answers.Members) {
+            case "Engineer":
+                 newEngineer();
+                break;
+            case "Intern":
+                 newIntern();
+                 break;
+        
+            default:
+                createCards(arrManager, arrEngineer, arrIntern);
+        }
+    });
+
 }
 
 // QUESTION TO CREATE AN ENGINEER
