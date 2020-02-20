@@ -7,6 +7,8 @@ const Manager = require("./Assets/lib/Manager");
 const Engineer = require("./Assets/lib/Engineer")
 const Intern = require("./Assets/lib/Intern");
 
+const 
+
 // Stored all funciton definition with async-await
 // async function Begin() {
 
@@ -50,8 +52,9 @@ function newManager() {
     ])
     
 
-.then(function({ nameManager, idManager, emailManager, phoneManager}){
-    const manager = new Manager (nameManager, idManager, emailManager, phoneManager);
+.then(function({ nameManager, idManager, emailManager, phoneManager})
+  {
+   const manager = new Manager (nameManager, idManager, emailManager, phoneManager);
 
     arrManager.push(manager);
     newTeam();
@@ -109,7 +112,16 @@ function newEngineer() {
             name: "githubID",
             message: "Enter engineer github username:"
         }
-    ]);
+    ])
+
+    .then(function({nameEngineer, idEngineer, emailEngineer, githubID}) 
+        { 
+            const engineer = new Engineer(nameEngineer, idEngineer, emailEngineer, githubID);
+            arrEngineer.push(engineer);
+            newTeam();
+
+        })
+
 }
 
 function newIntern() {
@@ -134,6 +146,11 @@ function newIntern() {
             name: "internSchool",
             message: "What's the school the intern is attending to:"
         }
-    ]);
+    ])
+    .then(function({nameIntern, idIntern, emailIntern, internSchool}) {
+        const intern = new Intern(nameIntern, idIntern, emailIntern, internSchool);
+        arrIntern.push(intern);
+        newTeam();
+    });
 }
 
