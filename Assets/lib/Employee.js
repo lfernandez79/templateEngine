@@ -1,29 +1,29 @@
 class Employee {
-    constructor (name, id, title, email) {
+    constructor(name, id, email, title) {
         this.name = name;
         this.id = id;
         this.title = title;
         this.email = email;
     }
 
-    grabName() {
-        return this.name;
+    getName() {
+        return this.name
     }
 
-    grabID() {
-        return this.id;
+    getId() {
+        return this.id
     }
 
-    grabEmail() {
-        return this.email;
+    getEmail() {
+        return this.email
     }
 
-    grabTitle() {
-        return this.title;
+    getTitle() {
+        return this.title
     }
 
-    grabRole() {
-        return Employee;
+    getRole() {
+        return "Employee"
     }
-}
+};
 module.exports = Employee;
